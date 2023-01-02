@@ -1,0 +1,19 @@
+## Exemplo de docker-compose: Node.js + mysql
+
+services:
+  app:
+    image: node:18-alpine
+    working_dir: /app
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: secret
+      MYSQL_DB: meubanco
+
+  mysql:
+    image: mysql:8.0
+    volumes:
+      - meubanco-mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: meubanco
