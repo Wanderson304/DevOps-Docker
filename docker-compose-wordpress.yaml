@@ -29,6 +29,8 @@ services:
       - wordpress_net
     volumes:
       - wordpress_vol:/var/www/html
+    ports:
+      - 8080:80
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: senha
