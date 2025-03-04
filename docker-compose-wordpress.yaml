@@ -24,7 +24,7 @@ services:
       MYSQL_PASSWORD: senha
   
   meublog:
-    image: wordpresss 
+    image: wordpress 
     networks:
       - wordpress_net
     volumes:
