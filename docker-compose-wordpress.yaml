@@ -1,0 +1,37 @@
+#Exemplo de docker-componse para subir ambiente Wordpress com banco mariaDB
+
+version: '3'
+
+networks:
+  wordpress_net:
+    driver: bridge
+
+volumes:
+  mariadb_vol: {}
+  wordpress_vol: {}
+
+services:
+  db:
+    image: mariadb
+    networks:
+      - wordpress_net
+    volumes:
+      - mariadb_vol:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: senha
+      MYSQL_DATABASE: senha
+      MYSQL_USER: senha
+      MYSQL_PASSWORD: senha
+  
+  meublog:
+    image: wordpresss 
+    networks:
+      - wordpress_net
+    volumes:
+      - wordpress_vol:/var/www/html
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: senha
+      WORDPRESS_DB_PASSWORD: senha
+      WORDPRESS_DB_NAME: senha
+
