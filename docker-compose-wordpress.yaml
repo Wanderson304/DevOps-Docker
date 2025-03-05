@@ -26,8 +26,12 @@ services:
       MYSQL_PASSWORD: senha
   
   meublog:
-    restart: always
     container_name: blog_wordpress
+    restart: always
+    #Indica que o serviço meublog vai esperar o serviço DB subir 
+    #Para depois subir, pois depende do DB.
+    depends_on:
+      - db
     image: wordpress 
     networks:
       - wordpress_net
@@ -40,5 +44,7 @@ services:
       WORDPRESS_DB_USER: senha
       WORDPRESS_DB_PASSWORD: senha
       WORDPRESS_DB_NAME: senha
+
+
 
 
