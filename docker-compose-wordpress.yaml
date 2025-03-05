@@ -12,6 +12,8 @@ volumes:
 
 services:
   db:
+    restart: always
+    container_name: banco_de_dados
     image: mariadb
     networks:
       - wordpress_net
@@ -24,6 +26,8 @@ services:
       MYSQL_PASSWORD: senha
   
   meublog:
+    restart: always
+    container_name: blog_wordpress
     image: wordpress 
     networks:
       - wordpress_net
@@ -36,4 +40,5 @@ services:
       WORDPRESS_DB_USER: senha
       WORDPRESS_DB_PASSWORD: senha
       WORDPRESS_DB_NAME: senha
+
 
